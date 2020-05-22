@@ -1,6 +1,8 @@
 package Model;
 
+import java.util.Collections;
 import java.util.LinkedList;
+import MyExceptions.MiException;
 
 import processing.core.PApplet;
 
@@ -9,6 +11,8 @@ public class Logic {
 	PApplet app;
 	
 	LinkedList<Persona> personitas;
+	
+	PersonaColor color;
 	
 	String[] txt, txtSplit;
 	
@@ -58,6 +62,35 @@ public class Logic {
 		
 		}
 		
+	}
+	
+	public void teclas (char i) {
+		switch(i) {
+		case 'n':
+			Collections.sort(personitas);
+			
+				
+				for(int a=0; a < personitas.size(); a++) {
+					personitas.get(a).setPxTexto(a*(200)+100);
+				}
+			
+			
+			break;
+		case 'p':
+			Collections.sort(personitas,color);
+			
+			for(int a=0; a < personitas.size(); a++) {
+				personitas.get(a).setPxTexto(a*(200)+100);
+			}
+			
+			break;
+		}
+	}
+	
+	public void hayInfectado (boolean a) throws MiException{
+		if(a == true) {
+			throw new MiException ("hay un contagiado");
+		}
 	}
 
 	public PApplet getApp() {

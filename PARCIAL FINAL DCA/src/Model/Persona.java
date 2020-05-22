@@ -2,7 +2,7 @@ package Model;
 
 import processing.core.PApplet;
 
-public abstract class Persona implements Runnable{
+public abstract class Persona implements Runnable, Comparable<Persona>{
 	
 	int px, py, tam, r, g, b, vel, dir, tipo;
 	PApplet app;
@@ -22,6 +22,10 @@ public abstract class Persona implements Runnable{
 		this.dir = (int) app.random(1,5);
 	}
 	
+	
+	public int compareTo(Persona o) {
+		return this.contador - o.getContador();
+	}
 	
 	public void run() {
 			mover();
